@@ -21,4 +21,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          folder: dist # 這行沒錯，但請確保您的 GitHub Pages 設定正確
+          folder: dist 
