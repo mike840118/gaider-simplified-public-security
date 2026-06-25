@@ -22,4 +22,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # 指定部署到 gh-pages 分支
-          folder: dist     # 這是打包出來的資料夾
+          folder: dist      # 這是打包出來的資料夾
