@@ -15,6 +15,10 @@
             </nav>
 
             <div class="user-actions">
+                <button @click="toggleFullscreen" class="fs-btn">
+                    {{ isFullscreen ? '⛒' : '⛶' }}
+                </button>
+
                 <select v-model="locale" class="lang-select">
                     <option value="zh">繁體中文</option>
                     <option value="en">English</option>
@@ -32,10 +36,35 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-// 取得當前語系變數，我們等一下會在 HTML 裡用 v-model 綁定它
 const { locale } = useI18n()
+const isFullscreen = ref(false)
+
+// 全螢幕切換邏輯
+const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen()
+        isFullscreen.value = true
+    } else {
+        document.exitFullscreen()
+        isFullscreen.value = false
+    }
+}
+
+// 監聽 ESC 鍵退出全螢幕時的狀態同步
+const handleFullscreenChange = () => {
+    isFullscreen.value = !!document.fullscreenElement
+}
+
+onMounted(() => {
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+})
+
+onUnmounted(() => {
+    document.removeEventListener('fullscreenchange', handleFullscreenChange)
+})
 </script>
 
 <style scoped>
@@ -131,5 +160,21 @@ const { locale } = useI18n()
     font-size: 15px;
     border-left: 1px solid #2a3543;
     padding-left: 16px;
+}
+
+.fs-btn {
+    background: transparent;
+    border: 1px solid #2a3543;
+    color: #8da2b5;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.fs-btn:hover {
+    color: #ffffff;
+    border-color: #4db8ff;
 }
 </style>

@@ -30,8 +30,15 @@
                 <a @click="setUserInfo(info.id)">
                     <span class="edit-icon">✏️</span>
                 </a>
-                <div style="position: absolute; top: 32px;right:10px; line-height: 1; font-size: 12px; color: #88B74F;">
-                    🔋 100%
+                <div :style="{
+                    position: 'absolute',
+                    top: '32px',
+                    right: '10px',
+                    lineHeight: '1',
+                    fontSize: '12px',
+                    color: info.electricity < 20 ? '#D66764' : '#88B74F'
+                }">
+                    🔋 {{ info.electricity }}%
                 </div>
             </div>
         </div>
@@ -91,8 +98,15 @@
             </div>
 
             <div class="grid-item g-fatigue" @click="routeUserInfo(info.id, 'fatigue')">
-                <div class="status-icon-wrap c-fatigue-bg">
-                    <span class="status-icon c-fatigue">🔋</span>
+                <div :style="{
+                    position: 'absolute',
+                    top: '32px',
+                    right: '10px',
+                    lineHeight: '1',
+                    fontSize: '12px',
+                    color: batteryColor
+                }">
+                    {{ batteryIcon }} {{ info.electricity }}%
                 </div>
                 <div class="status-text">
                     <div class="s-label">{{ $t('card.fatigue') }}</div>
@@ -114,7 +128,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, computed } from 'vue'
 import * as echarts from 'echarts'
 
 const { t } = useI18n()
@@ -134,7 +148,21 @@ let chartInstance = null
 const handleToLocation = (id) => emit('handleToLocation', id)
 const setUserInfo = (id) => emit('setUserInfo', id)
 const routeUserInfo = (id, path) => emit('routeUserInfo', id, path)
+const batteryIcon = computed(() => {
+    const val = props.info.electricity
+    if (val >= 90) return '🔋'   // 全滿
+    if (val >= 60) return '🔋'   // 7成 (這裡您可以用不同圖示，例如 🪫 有一半)
+    if (val >= 20) return '🪫'   // 3成
+    return '🪫'                 // 0成 (低電量)
+})
 
+// 設定顏色邏輯
+const batteryColor = computed(() => {
+    const val = props.info.electricity
+    if (val >= 60) return '#88B74F' // 綠色
+    if (val >= 20) return '#E7AF57' // 黃色 (3成)
+    return '#D66764'               // 紅色 (0成)
+})
 const initChart = () => {
     if (!chartRef.value) return
 

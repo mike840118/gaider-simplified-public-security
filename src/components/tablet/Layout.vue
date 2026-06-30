@@ -15,6 +15,10 @@
             </nav>
 
             <div class="user-actions">
+                <button @click="toggleFullscreen" class="fs-btn" :title="isFullscreen ? '退出全螢幕' : '全螢幕'">
+                    {{ isFullscreen ? '⛒' : '⛶' }}
+                </button>
+
                 <select v-model="locale" class="lang-select">
                     <option value="zh">繁體中文</option>
                     <option value="en">English</option>
@@ -32,14 +36,38 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-// 取得當前語系變數，我們等一下會在 HTML 裡用 v-model 綁定它
 const { locale } = useI18n()
+const isFullscreen = ref(false)
+
+// 全螢幕切換邏輯
+const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch((err) => {
+            console.error(`Error attempting to enable full-screen mode: ${err.message}`)
+        })
+    } else {
+        document.exitFullscreen()
+    }
+}
+
+// 監聽 ESC 鍵退出或系統全螢幕狀態變更
+const handleFullscreenChange = () => {
+    isFullscreen.value = !!document.fullscreenElement
+}
+
+onMounted(() => {
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+})
+
+onUnmounted(() => {
+    document.removeEventListener('fullscreenchange', handleFullscreenChange)
+})
 </script>
 
 <style scoped>
-/* CSS 完全不需要更動，保持原本完美的樣式即可 */
 .desktop-layout {
     background-color: #121921;
     min-height: 100vh;
@@ -56,13 +84,11 @@ const { locale } = useI18n()
     border-bottom: 1px solid #2a3543;
 }
 
-/* 1. Logo 區塊：保護標題不被擠壓、不換行 */
 .logo-area {
     display: flex;
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
-    /* 👈 關鍵：禁止被 Flexbox 壓縮 */
 }
 
 .logo-area h1 {
@@ -71,29 +97,23 @@ const { locale } = useI18n()
     margin: 0;
     color: #ffffff;
     white-space: nowrap;
-    /* 👈 關鍵：文字絕對不換行 */
 }
 
-/* 2. 中間導覽列：稍微縮小按鈕間距，同樣禁止換行 */
 .nav-links {
     display: flex;
     height: 100%;
     flex: 1;
-    /* 讓導覽列自適應填滿中間剩餘空間 */
     justify-content: center;
-    /* 讓選單置中比較好看 */
 }
 
 .nav-item {
     display: flex;
     align-items: center;
     padding: 0 8px;
-    /* 👈 把原本的 12px 縮小一點點，節省空間 */
     color: #8da2b5;
     text-decoration: none;
     font-size: 14px;
     white-space: nowrap;
-    /* 👈 關鍵：文字絕對不換行 */
 }
 
 .nav-item:hover {
@@ -116,19 +136,26 @@ const { locale } = useI18n()
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
-    /* 👈 關鍵：禁止被壓縮，避免選單跟退出疊在一起 */
 }
 
-.logout-btn {
+/* ⭐ 新增：全螢幕按鈕樣式 */
+.fs-btn {
     background: transparent;
-    border: none;
-    color: #ffffff;
+    border: 1px solid #2a3543;
+    color: #8da2b5;
+    padding: 6px 10px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
-    border-left: 1px solid #2a3543;
-    padding-left: 8px;
-    white-space: nowrap;
-    /* 👈 關鍵：「退出」兩個字絕對不換行 */
+    font-size: 16px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fs-btn:hover {
+    color: #ffffff;
+    border-color: #4db8ff;
 }
 
 .lang-select {
@@ -147,5 +174,16 @@ const { locale } = useI18n()
 .lang-select:focus {
     color: #ffffff;
     border-color: #4db8ff;
+}
+
+.logout-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    border-left: 1px solid #2a3543;
+    padding-left: 8px;
+    white-space: nowrap;
 }
 </style>

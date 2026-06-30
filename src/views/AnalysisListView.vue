@@ -50,6 +50,8 @@ const formatData = (sourceArray) => {
       gender: item.gender === 'WOMAN' ? '女' : '男',
       hasAvatar: !!item.url,
       avatarUrl: item.url,
+      electricity: item.electricity ?? 0,
+      batteryLevel: item.electricity > 20 ? 'high' : 'low',
       hr: item.data.HeartBeat?.hb || 0,
       spo2: item.data.BloodOxygen?.bo || 0,
       temp: item.data.BodyTemp?.bodyTemp || 36.5,
