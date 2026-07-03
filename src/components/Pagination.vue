@@ -9,9 +9,9 @@
     <div class="pagination-row">
       <button @click="changePage(current - 1)" :disabled="current === 1">&lt;</button>
 
-      <template v-for="(item, index) in visiblePages" :key="index">
+      <template v-for="(item, index) in visiblePages" :key="item === '...' ? 'ellipsis-' + index : 'page-' + item">
         <span v-if="item === '...'" class="page-ellipsis">...</span>
-        <button v-else :class="{ active: current === item }" @click="changePage(item)">
+        <button v-else :class="{ active: Number(current) === Number(item) }" @click="changePage(item)">
           {{ item }}
         </button>
       </template>
@@ -39,42 +39,37 @@ const emit = defineEmits(['change'])
 
 const totalPages = computed(() => Math.ceil(props.total / props.pageSize) || 1)
 
-// 計算應該顯示的頁碼陣列 (支援 ... 省略顯示)
+// 計算應該顯示的頁碼陣列 (不變)
 const visiblePages = computed(() => {
   const total = totalPages.value;
   const current = props.current;
 
-  // 如果總頁數小於等於 7 頁，全部顯示
   if (total <= 7) {
     return Array.from({ length: total }, (_, i) => i + 1);
   }
 
-  // 如果目前在前面的頁數 (前 4 頁)
   if (current <= 4) {
     return [1, 2, 3, 4, 5, '...', total];
   }
 
-  // 如果目前在後面的頁數 (倒數 4 頁)
   if (current >= total - 3) {
     return [1, '...', total - 4, total - 3, total - 2, total - 1, total];
   }
 
-  // 如果在中間，顯示 當前頁的前後一頁，並在兩側加上 ...
   return [1, '...', current - 1, current, current + 1, '...', total];
 })
 
 const changePage = (page) => {
-  if (page >= 1 && page <= totalPages.value) {
-    emit('change', page)
+  const pageNum = Number(page);
+  if (pageNum >= 1 && pageNum <= totalPages.value) {
+    emit('change', pageNum)
   }
 }
 
 const handleJump = (event) => {
   let val = parseInt(event.target.value)
-  // 防止輸入超過範圍的數字
-  if (val < 1) val = 1
+  if (isNaN(val) || val < 1) val = 1
   if (val > totalPages.value) val = totalPages.value
-
   changePage(val)
 }
 </script>
@@ -111,7 +106,8 @@ const handleJump = (event) => {
   background: white;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.1s ease;
+  /* 縮短過渡時間，讓點擊變色更即時 */
 }
 
 .pagination-row button:hover:not(:disabled) {
@@ -123,13 +119,13 @@ const handleJump = (event) => {
   cursor: not-allowed;
 }
 
+/* 確保當前作用中的頁碼能精準上色 */
 .pagination-row button.active {
-  background: #3b82f6;
-  color: white;
-  border-color: #3b82f6;
+  background-color: #3b82f6 !important;
+  color: white !important;
+  border-color: #3b82f6 !important;
 }
 
-/* 點點點的專屬樣式 */
 .page-ellipsis {
   padding: 4px 6px;
   color: #999;
@@ -145,9 +141,5 @@ const handleJump = (event) => {
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-}
-
-.goto-input:focus {
-  border-color: #3b82f6;
 }
 </style>

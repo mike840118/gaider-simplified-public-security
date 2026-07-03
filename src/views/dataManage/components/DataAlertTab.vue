@@ -1,37 +1,37 @@
 <template>
   <div class="table-container">
     <div class="filter-bar">
-      <input type="text" class="filter-input" placeholder="請輸入使用者姓名" />
+      <input type="text" class="filter-input" :placeholder="$t('add_member.placeholders.name')" />
       <div class="date-input-wrapper">
         <span class="icon-calendar">📅</span>
         <input type="date" class="filter-date" value="2026-06-23" />
       </div>
-      <span style="color: #666;">至</span>
+      <span style="color: #666;">{{ $t('analysis_tab.to') }}</span>
       <div class="date-input-wrapper">
         <span class="icon-calendar">📅</span>
         <input type="date" class="filter-date" value="2026-06-30" />
       </div>
-      <button class="btn btn-search">🔍 搜尋</button>
+      <button class="btn btn-search">🔍 {{ $t('common.search') }}</button>
       <div class="toggle-switch">
-        <span class="active">動態</span>
+        <span class="active">{{ $t('analysis_tab.dynamic') }}</span>
         <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
-        <span>靜態</span>
+        <span>{{ $t('analysis_tab.static') }}</span>
       </div>
     </div>
 
     <table class="alert-bubble-table">
       <thead>
         <tr>
-          <th>序號</th>
-          <th>大頭貼</th>
-          <th>姓名</th>
-          <th>性別</th>
-          <th>來源</th>
-          <th>數值 ⬍</th>
-          <th>狀態 ⬍</th>
-          <th>測量時間 ⬍</th>
-          <th>平台</th>
-          <th>版本號</th>
+          <th>{{ $t('data_manage.table.index') }}</th>
+          <th>{{ $t('data_manage.table.avatar') }}</th>
+          <th>{{ $t('data_manage.table.name') }}</th>
+          <th>{{ $t('data_manage.table.gender') }}</th>
+          <th>{{ $t('data_manage.table.version') }}</th>
+          <th>{{ $t('data_manage.table.value') }}</th>
+          <th>{{ $t('data_manage.table.status') }}</th>
+          <th>{{ $t('data_manage.table.measure_time') }}</th>
+          <th>{{ $t('data_manage.table.platform') }}</th>
+          <th>{{ $t('data_manage.table.version') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -49,9 +49,7 @@
           <td>{{ row.platform }}</td>
           <td>{{ row.version }}</td>
         </tr>
-        <tr v-if="paginatedData.length === 0">
-          <td colspan="10" style="padding: 40px; color: #999;">太棒了！無任何警報資料</td>
-        </tr>
+
       </tbody>
     </table>
   </div>
@@ -61,13 +59,18 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import Pagination from '@/components/Pagination.vue'
+// 1. 引入 useI18n
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps(['patients', 'metric', 'selectedUserId'])
 const currentPage = ref(1)
 
+// 2. 初始化 i18n
+const { t } = useI18n()
+
 watch([() => props.metric, () => props.selectedUserId], () => currentPage.value = 1)
 
-// 🌟 扁平化展開並過濾「僅限警報」
+// 🌟 扁平化展開並過濾
 const filteredData = computed(() => {
   let list = props.patients || []
   if (props.selectedUserId) list = list.filter(p => p.accountId === props.selectedUserId)
@@ -76,7 +79,6 @@ const filteredData = computed(() => {
   list.forEach(p => {
     const records = p.records ? (p.records[props.metric] || []) : []
     records.forEach(r => {
-      // 🚨 只挑選預警和緊急的資料
       if (r.level === 'WARN' || r.level === 'URGENT') {
         let val = '--'
         if (props.metric === 'bp') val = `${r.sbp}/${r.dbp}`
@@ -89,11 +91,13 @@ const filteredData = computed(() => {
           id: p.accountId + '_' + r.testTime,
           name: p.name || '未知',
           rawGender: p.gender,
-          gender: p.gender === 'WOMAN' ? '女' : '男',
+          // 3. 使用剛剛解構出來的 t() 函數，而不是 this.$t()
+          gender: p.gender === 'WOMAN' ? t('common.woman') : t('common.man'),
           mac: p.deviceCode || '--',
           value: val,
           levelCode: r.level,
-          statusText: r.level === 'URGENT' ? '緊急' : '預警',
+          // 3. 使用 t() 函數
+          statusText: r.level === 'URGENT' ? t('status.urgent') : t('status.warning'),
           time: r.testTime.replace('T', ' ').substring(0, 19),
           rawTime: new Date(r.testTime).getTime(),
           platform: 'Android',

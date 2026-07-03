@@ -66,8 +66,10 @@
     "logout": "Logout"
   },
   "data_manage": {
-    "user_list": "User List (Total {count})",
+    "user_list": "User List",
+    "user_search": "Search Name",
     "all_users": "All Users",
+      "no_user": "No such user",
     "tabs": {
       "bp": "BP",
       "spo2": "SpO₂",
@@ -76,6 +78,7 @@
       "hrv": "HRV"
     },
     "sub_tabs": {
+      "historyData": "Health History Data",
       "history": "History",
       "alert": "Alerts",
       "analysis": "Analysis"
@@ -83,6 +86,11 @@
     "table": {
       "index": "No.",
       "avatar": "Avatar",
+      "location": "Location",
+    "device_type": "Device Type",
+    "battery_level": "Battery Level",
+    "time": "Time",
+    "action": "Action",
       "name": "Name",
       "gender": "Gender",
       "mac": "Source (MAC)",
@@ -103,6 +111,7 @@
     "close_alert": "Dismiss",
     "announcement": "Announcement",
     "today": "Today",
+    "view": "View",
     "stats": {
       "total_members": "Total Members",
       "today_added": "Added Today",
@@ -343,5 +352,55 @@
   },
   "about": {
     "title": "About Page"
-  }
+  },
+  "analysis_tab": {
+      "to": "to",
+      "dynamic": "Dynamic",
+      "static": "Static",
+      "total_measurements": "Total Measurements",
+      "abnormal_count": "Abnormal Count",
+      "abnormal_rate": "Abnormal Rate",
+      "unit_times": "times",
+      "status_ratio": "Status Ratio Analysis",
+      "trend_daily_avg": "Data Trend (Historical Daily Avg)"
+    },
+    "bind_device": {
+      "title": "Device Binding",
+      "select_user": "Select User",
+      "placeholder_user": "Please select a user",
+      "select_device": "Select Device",
+      "placeholder_device": "Enter/Scan/Select device code",
+      "btn_confirm": "Confirm Binding"
+    },
+    "admission": {
+      "title": "Admission Management",
+      "select_user": "Please select a user",
+      "dept": "Department",
+      "placeholder_dept": "Select department",
+      "doctor": "Attending Physician",
+      "placeholder_doctor": "Select physician",
+      "nurse": "Primary Nurse",
+      "placeholder_nurse": "Select nurse",
+      "room": "Room Name",
+      "placeholder_room": "Select room",
+      "bed": "Bed No.",
+      "placeholder_bed": "Select bed",
+      "level": "Care Level",
+      "placeholder_level": "Please select",
+      "admission_no": "Admission No.",
+      "placeholder_admission_no": "Select admission no.",
+      "in_date": "Admission Date",
+      "placeholder_date": "Select date",
+      "out_date": "Discharge Date"
+    },
+    "system_log": {
+      "title": "System Log",
+      "export_report": "Export Daily Report",
+      "action": {
+        "sos_alert": "SOS Device Alert Operation",
+        "low_battery": "Device Low Battery",
+        "upload_normal": "Uploaded health info (Normal)",
+        "upload_abnormal": "Uploaded health info (Abnormal)"
+      }
+    }
 }

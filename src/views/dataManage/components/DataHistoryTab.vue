@@ -1,55 +1,60 @@
 <template>
-  <div class="table-container">
-    <div style="display:flex; justify-content:flex-end; margin-bottom: 12px;">
-      <button @click="handleExport"
-        style="background:#0ea5e9; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">
-        📥 匯出 Excel
+  <div class="history-tab-wrapper">
+    <div class="toolbar">
+      <button @click="handleExport" class="btn-export">
+        📥 {{ $t('history_tab.export_excel') }}
       </button>
     </div>
 
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>序號</th>
-          <th>大頭貼</th>
-          <th>姓名</th>
-          <th>性別</th>
-          <th>來源</th>
-          <th>數值</th>
-          <th>狀態</th>
-          <th>測量時間</th>
-          <th>平台</th>
-          <th>版本號</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="row in paginatedData" :key="row.id">
-          <td>{{ row.index }}</td>
-          <td>
-            <div class="avatar-placeholder-sm">{{ row.rawGender === 'WOMAN' ? '👩' : '👨' }}</div>
-          </td>
-          <td>{{ row.name }}</td>
-          <td>{{ row.gender }}</td>
-          <td class="mac-text">{{ row.mac }}</td>
-          <td class="bold">{{ row.value }}</td>
-          <td><span :class="['status-tag', getStatusColor(row.levelCode)]">{{ row.statusText }}</span></td>
-          <td>{{ row.time }}</td>
-          <td>{{ row.platform }}</td>
-          <td>{{ row.version }}</td>
-        </tr>
-        <tr v-if="paginatedData.length === 0">
-          <td colspan="10" style="padding: 40px; color: #999; text-align: center;">查無資料</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>{{ $t('data_manage.table.index') }}</th>
+            <th>{{ $t('data_manage.table.avatar') }}</th>
+            <th>{{ $t('data_manage.table.name') }}</th>
+            <th>{{ $t('data_manage.table.gender') }}</th>
+            <th>{{ $t('data_manage.table.version') }}</th>
+            <th>{{ $t('data_manage.table.value') }}</th>
+            <th>{{ $t('data_manage.table.status') }}</th>
+            <th>{{ $t('data_manage.table.measure_time') }}</th>
+            <th>{{ $t('data_manage.table.platform') }}</th>
+            <th>{{ $t('data_manage.table.version') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="row in paginatedData" :key="row.id">
+            <td>{{ row.index }}</td>
+            <td>
+              <div class="avatar-placeholder-sm">{{ row.rawGender === 'WOMAN' ? '👩' : '👨' }}</div>
+            </td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.gender }}</td>
+            <td class="mac-text">{{ row.mac }}</td>
+            <td class="bold">{{ row.value }}</td>
+            <td><span :class="['status-tag', getStatusColor(row.levelCode)]">{{ row.statusText }}</span></td>
+            <td>{{ row.time }}</td>
+            <td>{{ row.platform }}</td>
+            <td>{{ row.version }}</td>
+          </tr>
+          <tr v-if="paginatedData.length === 0">
+            <td colspan="10" style="padding: 40px; color: #999; text-align: center;">{{ $t('history_tab.no_data') }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <Pagination :total="filteredData.length" :current="currentPage" @change="currentPage = $event" />
   </div>
-  <Pagination :total="filteredData.length" :current="currentPage" @change="currentPage = $event" />
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue'
 import Pagination from '@/components/Pagination.vue'
 import { exportToExcel } from '@/utils/export.js'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const props = defineProps(['patients', 'metric', 'selectedUserId'])
 const currentPage = ref(1)
@@ -76,11 +81,11 @@ const filteredData = computed(() => {
         id: p.accountId + '_' + r.testTime,
         name: p.name || '未知',
         rawGender: p.gender,
-        gender: p.gender === 'WOMAN' ? '女' : '男',
+        gender: p.gender === 'WOMAN' ? t('common.woman') : t('common.man'),
         mac: p.deviceCode || '--',
         value: val,
         levelCode: r.level,
-        statusText: r.level === 'URGENT' ? '緊急' : r.level === 'WARN' ? '預警' : '正常',
+        statusText: r.level === 'URGENT' ? t('status.urgent') : r.level === 'WARN' ? t('status.warning') : t('status.normal'),
         time: r.testTime.replace('T', ' ').substring(0, 19),
         rawTime: new Date(r.testTime).getTime(),
         platform: 'Android',
@@ -105,19 +110,67 @@ const getStatusColor = (code) => {
 }
 
 const handleExport = () => {
+  // 直接使用 setup 內定義的 t 函數
   const exportData = filteredData.value.map(row => ({
-    "序號": row.index, "姓名": row.name, "性別": row.gender, "來源": row.mac,
-    "數值": row.value, "狀態": row.statusText, "測量時間": row.time
+    [t('data_manage.table.index')]: row.index,     // 假設你在 i18n 定義了 export.index
+    [t('data_manage.table.name')]: row.name,
+    [t('data_manage.table.gender')]: row.gender,
+    [t('data_manage.table.mac')]: row.mac,
+    [t('data_manage.table.value')]: row.value,
+    [t('data_manage.table.status')]: row.statusText,
+    [t('data_manage.table.time')]: row.time
   }))
-  exportToExcel(exportData, `健康歷史資料_${props.metric}`, [])
+
+  // 檔名也可以翻譯，或者保持原樣
+  const fileName = `${t('data_manage.sub_tabs.historyData')}_${t(`card.${props.metric}`)}`
+  exportToExcel(exportData, fileName, [])
 }
 </script>
 
 <style scoped>
+/* 整個 Tab 的最外層容器，確保它佔滿剩餘高度並允許內部彈性縮放 */
+.history-tab-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* 匯出按鈕的工具列，固定在最上方 */
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+  /* 確保不管下面表格多長，這裡都不會被壓縮或捲走 */
+}
+
+/* 美化匯出按鈕 */
+.btn-export {
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-export:hover {
+  background-color: #0284c7;
+}
+
+/* 表格專屬的滾動容器 */
 .table-container {
   width: 100%;
-  max-height: calc(100vh - 350px);
+  flex: 1;
+  /* 自動填滿工具列與分頁器中間的所有空間 */
   overflow: auto;
+  /* 重點：捲軸只會出現在這裡 */
   border-bottom: 1px solid #e2e8f0;
 }
 
@@ -134,6 +187,7 @@ const handleExport = () => {
   padding: 12px;
   color: #666;
   position: sticky;
+  /* 讓表格標題固定在表頭 */
   top: 0;
   z-index: 10;
   border-bottom: 2px solid #e2e8f0;

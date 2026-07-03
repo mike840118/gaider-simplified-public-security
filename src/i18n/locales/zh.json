@@ -66,8 +66,10 @@
     "logout": "退出"
   },
   "data_manage": {
-    "user_list": "用戶列表 (共 {count} 人)",
+    "user_list": "用戶列表",
+    "user_search":"搜尋姓名",
     "all_users": "全部用戶",
+     "no_user": "無此用戶",
     "tabs": {
       "bp": "血壓",
       "spo2": "血氧",
@@ -76,6 +78,7 @@
       "hrv": "HRV"
     },
     "sub_tabs": {
+      "historyData": "健康歷史資料",
       "history": "歷史資料",
       "alert": "警報資料",
       "analysis": "統計分析"
@@ -83,6 +86,11 @@
     "table": {
       "index": "序號",
       "avatar": "大頭貼",
+      "location":"位置",
+      "device_type":"設備類型",
+      "battery_level":"剩餘電量",
+      "time":"時間",
+      "action":"操作",
       "name": "姓名",
       "gender": "性別",
       "mac": "來源 (MAC)",
@@ -103,6 +111,7 @@
     "close_alert": "關閉警報",
     "announcement": "公告",
     "today": "今天",
+    "view": "查看",
     "stats": {
       "total_members": "總會員人數",
       "today_added": "今日新增",
@@ -343,5 +352,71 @@
   },
   "about": {
     "title": "這是一個關於頁面"
+  },
+  "analysis_tab": {
+    "to": "至",
+    "dynamic": "動態",
+    "static": "靜態",
+    "total_measurements": "測量總次數",
+    "abnormal_count": "異常次數",
+    "abnormal_rate": "異常率",
+    "unit_times": "次",
+    "status_ratio": "狀態比例分析",
+    "trend_daily_avg": "數據變化趨勢（歷史每日平均）"
+  },
+  "history_tab": {
+    "export_excel": "匯出 Excel",
+    "no_data_found": "查無資料"
+  },
+  "batteryDeviceModel": {
+    "replace": "替換",
+    "no_data": "目前無低電量設備",
+    "device_code": "原始設備 MAC",
+    "bound_user": "綁定用戶",
+    "warning": "請注意：設備替換後，原設備將自動解綁，歷史數據將繼承至新設備。",
+    "new_device_code": "新設備 MAC / 設備碼",
+    "new_device_placeholder": "請輸入或掃描新設備碼",
+    "replace_success": "確認替換成功",
+    "cancel": "取消",
+    "replace_success_msg": "設備替換成功！"
+  },
+  "bind_device": {
+    "title": "設備綁定",
+    "select_user": "選擇用戶",
+    "placeholder_user": "請選擇用戶",
+    "select_device": "選擇設備",
+    "placeholder_device": "輸入/掃描/選擇設備碼",
+    "btn_confirm": "確認綁定"
+  },
+  "admission": {
+    "title": "入院・入所管理",
+    "select_user": "請選擇用戶",
+    "dept": "所屬科別",
+    "placeholder_dept": "請選擇科別",
+    "doctor": "主治醫師",
+    "placeholder_doctor": "請選擇醫師",
+    "nurse": "主責護理師",
+    "placeholder_nurse": "請選擇護理師",
+    "room": "房間名稱",
+    "placeholder_room": "請選擇房間",
+    "bed": "床號",
+    "placeholder_bed": "請選擇床號",
+    "level": "護理級別",
+    "placeholder_level": "請選擇",
+    "admission_no": "住院號",
+    "placeholder_admission_no": "請選擇住院號",
+    "in_date": "入院時間",
+    "placeholder_date": "請選擇日期",
+    "out_date": "出院時間"
+  },
+  "system_log": {
+    "title": "系統記錄",
+    "export_report": "輸出本日報告",
+    "action": {
+      "sos_alert": "SOS設備預警操作",
+      "low_battery": "設備電量低",
+      "upload_normal": "上傳了健康訊息 (正常)",
+      "upload_abnormal": "上傳了健康訊息 (異常)"
+    }
   }
 }

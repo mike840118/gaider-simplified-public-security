@@ -1,22 +1,32 @@
 <template>
   <div class="data-wrapper">
     <div class="user-sidebar">
-      <div class="sidebar-header">{{ $t('data_manage.user_list', { count: patientsList.length }) }}</div>
+      <div class="sidebar-header">
+        <span class="header-title">{{ $t('data_manage.user_list', '用戶列表') }}</span>
+        <input type="text" v-model="searchUserQuery" :placeholder="$t('data_manage.user_search', '搜索用戶')"
+          class="user-search-input" @click.stop />
+      </div>
+
       <div class="user-list-box">
         <div class="user-item" :class="{ active: selectedUserId === null }" @click="selectedUserId = null">
           <div class="user-icon placeholder">👥</div>
           <span class="user-name-text">{{ $t('data_manage.all_users', '全部用戶') }}</span>
         </div>
 
-        <div v-for="user in patientsList" :key="user.accountId" class="user-item"
+        <div v-for="user in filteredUserList" :key="user.accountId" class="user-item"
           :class="{ active: selectedUserId === user.accountId }" @click="selectedUserId = user.accountId">
           <div class="user-icon placeholder">
             {{ user.gender === 'WOMAN' ? '👩' : '👨' }}
           </div>
           <span class="user-name-text">{{ user.name || $t('common.unknown') }}</span>
         </div>
+
+        <div v-if="filteredUserList.length === 0" class="no-user-hint">
+          {{ $t('data_manage.no_user') }}
+        </div>
       </div>
     </div>
+
     <div class="data-content">
       <div class="metric-tabs">
         <button :class="{ active: currentMetric === 'bp' }" @click="currentMetric = 'bp'">{{ $t('data_manage.tabs.bp',
@@ -51,8 +61,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-// 🌟 匯入您新產生的三萬筆資料庫
+import { ref, computed } from 'vue'
 import rawPatientData from '@/mock/patients_new.json'
 
 import DataHistoryTab from './components/DataHistoryTab.vue'
@@ -64,10 +73,19 @@ const currentMetric = ref('hr')
 const selectedUserId = ref(null)
 
 const patientsList = ref(rawPatientData.data.data)
+
+const searchUserQuery = ref('')
+
+const filteredUserList = computed(() => {
+  const query = searchUserQuery.value.trim().toLowerCase()
+  if (!query) return patientsList.value
+  return patientsList.value.filter(user => {
+    return user.name && user.name.toLowerCase().includes(query)
+  })
+})
 </script>
 
 <style scoped>
-/* (保留您原本 DataManageView 的所有樣式，此處省略以節省版面) */
 .data-wrapper {
   display: flex;
   gap: 20px;
@@ -90,13 +108,47 @@ const patientsList = ref(rawPatientData.data.data)
   flex-shrink: 0;
 }
 
+/* 🌟 修改此處樣式：讓 Header 內的標題與 Input 左右排列並置中對齊 */
 .sidebar-header {
   background: #2f4955;
   color: white;
-  padding: 12px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header-title {
   font-weight: bold;
   font-size: 15px;
-  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* 🌟 新增：用戶搜尋框精美外觀樣式 */
+.user-search-input {
+  width: 110px;
+  padding: 4px 8px;
+  border: 1px solid #4a6572;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.user-search-input::placeholder {
+  color: #b0bec5;
+}
+
+.user-search-input:focus {
+  background-color: white;
+  color: #333;
+  width: 120px;
+  /* 聚焦時稍微拉寬，增加輸入舒適度 */
+  border-color: #3bc8f6;
 }
 
 .user-list-box {
@@ -154,6 +206,13 @@ const patientsList = ref(rawPatientData.data.data)
   overflow: hidden;
   text-overflow: ellipsis;
   flex: 1;
+}
+
+.no-user-hint {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+  padding: 20px 0;
 }
 
 .data-content {

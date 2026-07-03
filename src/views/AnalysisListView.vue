@@ -3,10 +3,6 @@
     <div class="filter-section">
       <input type="text" v-model="searchQuery" :placeholder="$t('common.search_placeholder')" class="search-input" />
       <button class="search-btn">🔍 {{ $t('common.search') }}</button>
-
-      <button class="btn-export" @click="handleExport">
-        <span class="icon">📥</span> 匯出 Excel報表
-      </button>
     </div>
 
     <div class="cards-grid">
@@ -22,7 +18,6 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import MonitorCard from '@/components/common/MonitorCard.vue'
 import rawPatientData from '@/mock/patients.json'
-import { exportToExcel } from '@/utils/export.js'; // 匯入轉檔工具
 
 const { t } = useI18n()
 const searchQuery = ref('')
@@ -88,38 +83,7 @@ const pagedData = computed(() => {
   return result
 })
 
-// 處理匯出 Excel 的邏輯
-const handleExport = () => {
-  // 針對「過濾後的平坦資料 (filteredPatients)」進行映射，而非分頁後的二維資料
-  const exportData = filteredPatients.value.map((row, index) => {
 
-    // 簡單的狀態文字轉換
-    const statusMap = { 'normal': '正常', 'warning': '預警', 'danger': '緊急' }
-    const heatMap = { 'normal': '正常', 'warning': '警戒' }
-    const fatigueMap = { 'normal': '正常', 'warning': '警戒', 'recovery': '回復', 'no_data': '無資料' }
-
-    return {
-      "序號": index + 1,
-      "姓名": row.name,
-      "性別": row.gender,
-      "年齡": row.age,
-      "心率 (bpm)": row.hr,
-      "血氧 (%)": row.spo2,
-      "體溫 (°C)": row.temp,
-      "血壓 (mmHg)": `${row.bpSys}/${row.bpDia}`,
-      "HRV": row.hrv,
-      "今日步數": row.step,
-      "消耗熱量 (kcal)": row.kcal,
-      "中暑風險": heatMap[row.heat] || '無資料',
-      "疲勞度": fatigueMap[row.fatigue] || '無資料',
-      "整體狀態": statusMap[row.status] || '正常',
-      "設備電量 (%)": row.electricity,
-      "所在位置": row.location
-    }
-  });
-
-  exportToExcel(exportData, '健康監測卡片數據總表', []);
-};
 </script>
 
 <style scoped>

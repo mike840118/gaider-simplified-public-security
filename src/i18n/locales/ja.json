@@ -66,8 +66,10 @@
     "logout": "ログアウト"
   },
   "data_manage": {
-    "user_list": "ユーザーリスト (全 {count} 人)",
+    "user_list": "ユーザーリスト",
+    "user_search": "氏名検索",
     "all_users": "全ユーザー",
+     "no_user": "該当ユーザーなし",
     "tabs": {
       "bp": "血圧",
       "spo2": "血中酸素",
@@ -76,6 +78,7 @@
       "hrv": "HRV"
     },
     "sub_tabs": {
+      "historyData": "健康履歴データ",
       "history": "履歴データ",
       "alert": "アラートデータ",
       "analysis": "統計分析"
@@ -83,6 +86,11 @@
     "table": {
       "index": "番号",
       "avatar": "写真",
+      "location": "位置",
+    "device_type": "デバイスタイプ",
+    "battery_level": "電池残量",
+    "time": "時間",
+    "action": "操作",
       "name": "氏名",
       "gender": "性別",
       "mac": "ソース (MAC)",
@@ -103,6 +111,7 @@
     "close_alert": "アラート解除",
     "announcement": "お知らせ",
     "today": "本日",
+    "view": "確認",
     "stats": {
       "total_members": "総会員数",
       "today_added": "本日追加",
@@ -343,5 +352,71 @@
   },
   "about": {
     "title": "このページについて"
-  }
+  },
+  "analysis_tab": {
+      "to": "〜",
+      "dynamic": "動的",
+      "static": "静的",
+      "total_measurements": "総測定回数",
+      "abnormal_count": "異常回数",
+      "abnormal_rate": "異常率",
+      "unit_times": "回",
+      "status_ratio": "ステータス比率分析",
+      "trend_daily_avg": "データ変動トレンド（過去の1日平均）"
+    },
+    "history_tab": {
+      "export_excel": "Excel出力",
+      "no_data_found": "データが見つかりません"
+    },
+    "batteryDeviceModel": {
+      "replace": "交換",
+      "no_data": "現在、電池残量低下のデバイスはありません",
+      "device_code": "元のデバイスMAC",
+      "bound_user": "連携ユーザー",
+      "warning": "ご注意：デバイス交換後、元のデバイスは自動的に連携解除され、履歴データは新しいデバイスに引き継がれます。",
+      "new_device_code": "新デバイスMAC / デバイスコード",
+      "new_device_placeholder": "新しいデバイスコードを入力またはスキャン",
+      "replace_success": "交換を確定",
+      "cancel": "キャンセル",
+      "replace_success_msg": "デバイスの交換が完了しました！"
+    },
+    "bind_device": {
+      "title": "デバイス連携",
+      "select_user": "ユーザーを選択",
+      "placeholder_user": "ユーザーを選択してください",
+      "select_device": "デバイスを選択",
+      "placeholder_device": "デバイスコードを入力/スキャン/選択",
+      "btn_confirm": "連携を確定"
+    },
+    "admission": {
+      "title": "入院・入所管理",
+      "select_user": "ユーザーを選択してください",
+      "dept": "所属科",
+      "placeholder_dept": "科を選択してください",
+      "doctor": "主治医",
+      "placeholder_doctor": "医師を選択してください",
+      "nurse": "担当看護師",
+      "placeholder_nurse": "看護師を選択してください",
+      "room": "部屋名",
+      "placeholder_room": "部屋を選択してください",
+      "bed": "ベッド番号",
+      "placeholder_bed": "ベッドを選択してください",
+      "level": "看護レベル",
+      "placeholder_level": "選択してください",
+      "admission_no": "入院番号",
+      "placeholder_admission_no": "入院番号を選択してください",
+      "in_date": "入院日",
+      "placeholder_date": "日付を選択してください",
+      "out_date": "退院日"
+    },
+    "system_log": {
+      "title": "システムログ",
+      "export_report": "本日のレポートを出力",
+      "action": {
+        "sos_alert": "SOSデバイス予警報操作",
+        "low_battery": "デバイス電池残量低下",
+        "upload_normal": "健康情報をアップロードしました (正常)",
+        "upload_abnormal": "健康情報をアップロードしました (異常)"
+      }
+    }
 }
