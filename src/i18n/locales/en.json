@@ -364,6 +364,22 @@
       "status_ratio": "Status Ratio Analysis",
       "trend_daily_avg": "Data Trend (Historical Daily Avg)"
     },
+      "history_tab": {
+    "export_excel": "Export Excel",
+    "no_data_found": "No data found"
+  }, 
+  "batteryDeviceModel": {
+    "replace": "Replace",
+    "no_data": "No low-battery devices available",
+    "device_code": "Original Device MAC",
+    "bound_user": "Bound User",
+    "warning": "Please note: After device replacement, the original device will be automatically unbound, and historical data will be inherited by the new device.",
+    "new_device_code": "New Device MAC / Device Code",
+    "new_device_placeholder": "Please enter or scan the new device code",
+    "replace_success": "Replacement Confirmed Successfully",
+    "cancel": "Cancel",
+    "replace_success_msg": "Device replacement successful!"
+  },
     "bind_device": {
       "title": "Device Binding",
       "select_user": "Select User",
