@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+# 1. 必須設定權限，否則部署會失敗
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -17,9 +23,12 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+      # 2. 將 build 出來的資料夾 (dist) 上傳為 Artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages # 指定部署到 gh-pages 分支
-          folder: dist      # 這是打包出來的資料夾
+          path: 'dist'
+
+      # 3. 將上傳的 Artifact 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
