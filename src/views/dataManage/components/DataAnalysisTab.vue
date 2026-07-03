@@ -28,7 +28,7 @@
       <div class="summary-card">
         <div class="card-label text-red">{{ $t('analysis_tab.abnormal_count') }}</div>
         <div class="card-value text-red">{{ summaryStats.abnormal }} <span class="unit">{{ $t('analysis_tab.unit_times')
-            }}</span></div>
+        }}</span></div>
       </div>
       <div class="summary-card">
         <div class="card-label text-orange">{{ $t('analysis_tab.abnormal_rate') }}</div>
@@ -202,6 +202,7 @@ const renderCharts = () => {
     }]
   }, true)
 }
+
 
 onMounted(() => nextTick(() => renderCharts()))
 watch(() => computedAnalysis.value, () => renderCharts(), { deep: true })
