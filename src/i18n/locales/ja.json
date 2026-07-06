@@ -21,7 +21,8 @@
     "unit_person": "人",
     "unit_count": "件",
     "view_more": "もっと見る >",
-    "view_details": "詳細を見る >"
+    "view_details": "詳細を見る >",
+    "account_placeholder": "アカウント"
   },
   "pagination": {
     "total": "全 {count} 件",
@@ -102,9 +103,15 @@
       "no_data_in_category": "このカテゴリーにはデータがありません"
     }
   },
-  "user_manage": {
-    "no_match": "該当するユーザーが見つかりません"
-  },
+"user_manage": {
+      "no_match": "該当するユーザーが見つかりません",
+      "select_user": "ユーザーを選択",
+      "all_org": "全組織",
+      "table": {
+        "account": "アカウント(ID)",
+        "org": "所属組織"
+      }
+    },
   "dashboard": {
     "alert": "緊急：{company} {name} 様が転倒検知アラートを発生させました！",
     "handle_now": "即時対応",

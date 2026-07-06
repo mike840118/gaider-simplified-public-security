@@ -3,15 +3,13 @@
     <div class="filter-bar">
       <input type="text" class="filter-input" :placeholder="$t('add_member.placeholders.name')" />
       <div class="date-input-wrapper">
-        <span class="icon-calendar">📅</span>
         <input type="date" class="filter-date" value="2026-06-23" />
       </div>
       <span style="color: #666;">{{ $t('analysis_tab.to') }}</span>
       <div class="date-input-wrapper">
-        <span class="icon-calendar">📅</span>
         <input type="date" class="filter-date" value="2026-06-30" />
       </div>
-      <button class="btn btn-search">🔍 {{ $t('common.search') }}</button>
+      <button class="btn btn-search">{{ $t('common.search') }}</button>
       <div class="toggle-switch">
         <span class="active">{{ $t('analysis_tab.dynamic') }}</span>
         <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>

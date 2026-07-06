@@ -10,36 +10,66 @@
         <div class="form-group">
           <label>{{ $t('bind_device.select_user') }}</label>
           <div class="input-with-btn">
-            <input type="text" :placeholder="$t('bind_device.placeholder_user')" />
-            <button class="btn-select">{{ $t('common.select') }}</button>
+            <input type="text" :value="selectedUserName" readonly :placeholder="$t('bind_device.placeholder_user')" />
+            <button class="btn-select" @click="isUserSelectOpen = true">{{ $t('common.select') }}</button>
           </div>
         </div>
 
-        <div class="form-group mt-4">
-          <label>{{ $t('bind_device.select_device') }}</label>
-          <div class="input-with-btn">
-            <div class="input-icon-wrapper">
-              <input type="text" :placeholder="$t('bind_device.placeholder_device')" />
-              <span class="camera-icon">📷</span>
-            </div>
-            <button class="btn-select">{{ $t('common.select') }}</button>
+        <div class="form-group">
+          <label>{{ $t('batteryDeviceModel.new_device_code') }}</label>
+          <div class="input-wrapper">
+            <select v-model="newDeviceCode" class="device-select">
+              <option value="" disabled selected>{{ $t('batteryDeviceModel.new_device_placeholder') }}</option>
+              <option v-for="code in availableDeviceCodes" :key="code" :value="code">
+                {{ code }}
+              </option>
+            </select>
           </div>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <button class="btn-confirm" @click="closeModal">{{ $t('bind_device.btn_confirm') }}</button>
+        <div class="modal-footer">
+          <button class="btn-confirm" @click="closeModal">{{ $t('bind_device.btn_confirm') }}</button>
+        </div>
       </div>
     </div>
+
+    <UserSelectModal :is-open="isUserSelectOpen" @close="isUserSelectOpen = false" @select="handleUserSelect" />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import UserSelectModal from './UserSelectModal.vue' // 引入子彈窗
+
 const props = defineProps({ isOpen: Boolean })
 const emit = defineEmits(['close'])
-const closeModal = () => emit('close')
-</script>
 
+const isUserSelectOpen = ref(false)
+const selectedUserName = ref('')
+const newDeviceCode = ref('')
+
+const availableDeviceCodes = [
+  '50:C0:F0:09:B1:2B',
+  '50:C0:F0:FB:91:4E',
+  '50:C0:F0:93:8D:E7',
+  '50:V0:F0:33:9B:P8',
+  '50:C0:G0:65:H5:1A'
+]
+
+const handleUserSelect = (user) => {
+  selectedUserName.value = user.name
+  isUserSelectOpen.value = false
+}
+
+const closeModal = () => {
+  emit('close')
+  // 延遲清空資料，避免關閉動畫時看到內容消失
+  setTimeout(() => {
+    selectedUserName.value = ''
+    newDeviceCode.value = ''
+  }, 300)
+}
+</script>
 <style scoped>
 .modal-overlay {
   position: fixed;
@@ -157,5 +187,26 @@ const closeModal = () => emit('close')
   font-size: 15px;
   cursor: pointer;
   font-weight: bold;
+}
+
+/* 新增下拉式選單樣式 */
+.device-select {
+  width: 100%;
+  padding: 10px 36px 10px 12px;
+  /* 右側保留 padding 給預設箭頭或 icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  background-color: white;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  appearance: none;
+  /* 隱藏原生箭頭以利自訂，或可依需求移除此行 */
+}
+
+/* 若隱藏了原生箭頭，可以使用自訂的背景圖案，或是直接依賴瀏覽器預設樣式 */
+.device-select:focus {
+  border-color: #0ea5e9;
 }
 </style>

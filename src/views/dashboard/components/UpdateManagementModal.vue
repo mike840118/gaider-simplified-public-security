@@ -6,8 +6,8 @@
 
       <div class="user-select-bar">
         <span>{{ $t('file_manage.search_user') }}</span>
-        <input type="text" :placeholder="$t('file_manage.search_placeholder')" />
-        <button class="btn-select">{{ $t('common.select') }}</button>
+        <input type="text" :value="selectedUserName" readonly :placeholder="$t('file_manage.search_placeholder')" />
+        <button class="btn-select" @click="isUserSelectOpen = true">{{ $t('common.select') }}</button>
       </div>
 
       <div class="table-container">
@@ -254,14 +254,30 @@
         <button class="btn-primary" @click="closeModal">{{ $t('common.save') }}</button>
         <button class="btn-default" @click="closeModal">{{ $t('common.cancel') }}</button>
       </div>
+
     </div>
+    <UserSelectModal :is-open="isUserSelectOpen" @close="isUserSelectOpen = false" @select="handleUserSelect" />
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted, watch, nextTick, computed } from 'vue'
+import UserSelectModal from './UserSelectModal.vue' // 確保這個路徑與檔案名稱正確
 const props = defineProps({ isOpen: Boolean })
 const emit = defineEmits(['close'])
+
 const closeModal = () => emit('close')
+
+// 控制使用者選擇彈窗的變數
+const isUserSelectOpen = ref(false)
+// 儲存選取到的使用者姓名
+const selectedUserName = ref('')
+
+// 處理從 UserSelectModal 傳回來的選擇事件
+const handleUserSelect = (user) => {
+  selectedUserName.value = user.name
+  isUserSelectOpen.value = false // 選完後自動關閉子彈窗
+}
 </script>
 
 <style scoped>

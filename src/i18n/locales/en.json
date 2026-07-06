@@ -21,7 +21,8 @@
     "unit_person": "",
     "unit_count": "pcs",
     "view_more": "View More >",
-    "view_details": "View Details >"
+    "view_details": "View Details >",
+    "account_placeholder": "Account"
   },
   "pagination": {
     "total": "Total {count}",
@@ -102,9 +103,15 @@
       "no_data_in_category": "No data in this category"
     }
   },
-  "user_manage": {
-    "no_match": "No matching user found"
-  },
+ "user_manage": {
+      "no_match": "No matching user found",
+      "select_user": "Select User",
+      "all_org": "All Organizations",
+      "table": {
+        "account": "Account (ID)",
+        "org": "Organization"
+      }
+    },
   "dashboard": {
     "alert": "Emergency: {company} - Bed {name} triggered fall alarm!",
     "handle_now": "Handle Now",

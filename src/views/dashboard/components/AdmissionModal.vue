@@ -8,8 +8,8 @@
 
       <div class="modal-body">
         <div class="user-select-row">
-          <input type="text" :placeholder="$t('admission.select_user')" />
-          <button class="btn-select">{{ $t('common.select') }}</button>
+          <input type="text" :value="selectedUserName" readonly :placeholder="$t('admission.select_user')" />
+          <button class="btn-select" @click="isUserSelectOpen = true">{{ $t('common.select') }}</button>
         </div>
 
         <div class="form-grid">
@@ -79,15 +79,33 @@
         <button class="btn-default" @click="closeModal">{{ $t('common.cancel') }}</button>
       </div>
     </div>
+
+    <UserSelectModal :is-open="isUserSelectOpen" @close="isUserSelectOpen = false" @select="handleUserSelect" />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import UserSelectModal from './UserSelectModal.vue' // 引入子彈窗
+
 const props = defineProps({ isOpen: Boolean })
 const emit = defineEmits(['close'])
-const closeModal = () => emit('close')
-</script>
 
+const isUserSelectOpen = ref(false)
+const selectedUserName = ref('')
+
+const handleUserSelect = (user) => {
+  selectedUserName.value = user.name
+  isUserSelectOpen.value = false
+}
+
+const closeModal = () => {
+  emit('close')
+  setTimeout(() => {
+    selectedUserName.value = ''
+  }, 300)
+}
+</script>
 <style scoped>
 .modal-overlay {
   position: fixed;

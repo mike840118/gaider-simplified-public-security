@@ -31,7 +31,7 @@
                 <td>{{ formatTime(device.electricity) }}</td>
                 <td>
                   <button class="btn-text-blue" @click="goToReplace(device)">{{ $t('batteryDeviceModel.replace')
-                  }}</button>
+                    }}</button>
                 </td>
               </tr>
               <tr v-if="!deviceInfo.data || deviceInfo.data.length === 0">

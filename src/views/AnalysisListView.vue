@@ -2,7 +2,7 @@
   <div class="home-container">
     <div class="filter-section">
       <input type="text" v-model="searchQuery" :placeholder="$t('common.search_placeholder')" class="search-input" />
-      <button class="search-btn">🔍 {{ $t('common.search') }}</button>
+      <button class="search-btn">{{ $t('common.search') }}</button>
     </div>
 
     <div class="cards-grid">

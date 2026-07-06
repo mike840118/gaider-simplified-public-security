@@ -21,7 +21,8 @@
     "unit_person": "人",
     "unit_count": "件",
     "view_more": "查看更多 >",
-    "view_details": "查看詳情 >"
+    "view_details": "查看詳情 >",
+    "account_placeholder": "帳號"
   },
   "pagination": {
     "total": "共 {count} 項",
@@ -103,7 +104,13 @@
     }
   },
   "user_manage": {
-    "no_match": "找不到符合名稱的用戶"
+    "no_match": "找不到符合名稱的用戶",
+    "select_user": "選擇使用者",
+    "all_org": "全部機構",
+    "table": {
+      "account": "帳號(ID)",
+      "org": "所屬機構"
+    }
   },
   "dashboard": {
     "alert": "緊急：{company} 床 {name} 觸發跌倒警報！",
