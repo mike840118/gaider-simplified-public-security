@@ -57,6 +57,9 @@ onMounted(() => {
   if (savedLocale) {
     locale.value = savedLocale
   }
+  const handleFullscreenChange = () => {
+    isFullscreen.value = !!document.fullscreenElement
+  }
 
   document.addEventListener('fullscreenchange', handleFullscreenChange)
 })

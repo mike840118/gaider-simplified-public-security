@@ -12,3 +12,5 @@ app.use(createPinia())
 app.use(router)
 app.use(i18n)
 app.mount('#app')
+
+document.title = i18n.global.t('layout.titleLayout')

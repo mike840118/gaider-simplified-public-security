@@ -18,6 +18,16 @@
 
 <script setup>
 
+defineProps({
+  patients: {
+    type: Array,
+    default: () => []
+  },
+  selected: {
+    type: Object,
+    default: null
+  }
+})
 
 const handleClick = (patient) => {
   // 室內地圖點擊標記，可以自行加入選中邏輯或 Emit 事件

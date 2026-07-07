@@ -51,6 +51,7 @@
     "recovery": "Recovery"
   },
   "layout": {
+    "titleLayout": "Health Big Data Management Platform",
     "title": "Health Big Data",
     "title2": "Management Platform",
     "title_short": "Health Platform",
