@@ -79,8 +79,9 @@
 
           <button class="action-btn border-green text-green" @click="isSystemLogOpen = true">{{
             $t('dashboard.actions.system_log') }}</button>
-          <button class="action-btn border-yellow text-yellow">{{ $t('dashboard.actions.shift_log')
-            }}</button>
+          <button class="action-btn border-yellow text-yellow" @click="isShiftLogOpen = true">{{
+            $t('dashboard.actions.shift_log')
+          }}</button>
         </div>
       </div>
     </div>
@@ -149,6 +150,7 @@
     <BindDeviceModal :is-open="isBindDeviceOpen" @close="isBindDeviceOpen = false" />
     <AdmissionModal :is-open="isAdmissionOpen" @close="isAdmissionOpen = false" />
     <BatteryViewModal :is-open="isBatteryModalOpen" :device-info="selectedInfo" @close="isBatteryModalOpen = false" />
+    <ShiftLogModal :is-open="isShiftLogOpen" @close="isShiftLogOpen = false" />
   </div>
 </template>
 
@@ -164,6 +166,7 @@ import SystemLogModal from './components/SystemLogModal.vue'
 import BindDeviceModal from './components/BindDeviceModal.vue'
 import AdmissionModal from './components/AdmissionModal.vue'
 import BatteryViewModal from './components/BatteryDeviceModal.vue'
+import ShiftLogModal from './components/ShiftLogModal.vue'
 
 const { t } = useI18n() // 👈 初始化
 const patients = ref(rawPatientData.data.data)
@@ -208,7 +211,9 @@ const isSystemLogOpen = ref(false)
 const isBindDeviceOpen = ref(false)
 const isAdmissionOpen = ref(false)
 const isBatteryModalOpen = ref(false)
+const isShiftLogOpen = ref(false)
 const selectedInfo = ref({})
+
 
 // 提供給卡片呼叫的 function
 const openBattery = (statItem) => {
