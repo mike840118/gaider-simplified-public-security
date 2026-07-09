@@ -114,8 +114,8 @@
       }
     },
   "dashboard": {
-    "alert": "Emergency: {company} - Bed {name} triggered fall alarm!",
-    "handle_now": "Handle Now",
+  "alert": "Emergency: {company} - Bed {name} High body temperature detected!",
+     "handle_now": "Handle Now",
     "close_alert": "Dismiss",
     "announcement": "Announcement",
     "today": "Today",

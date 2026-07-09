@@ -114,7 +114,7 @@
       }
     },
   "dashboard": {
-    "alert": "緊急：{company} {name} 様が転倒検知アラートを発生させました！",
+    "alert": "緊急：{company} {name} 様の体温上昇を検知しました！",
     "handle_now": "即時対応",
     "close_alert": "アラート解除",
     "announcement": "お知らせ",

@@ -53,7 +53,7 @@ import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 // ⭐ 1. 初始化讀取 LocalStorage
 onMounted(() => {
-  const savedLocale = localStorage.getItem('app-locale')
+  const savedLocale = localStorage.getItem('app-locale-public-security')
   if (savedLocale) {
     locale.value = savedLocale
   }
@@ -66,7 +66,7 @@ onMounted(() => {
 
 // ⭐ 2. 監聽 locale 變化並存入 LocalStorage
 watch(locale, (newLocale) => {
-  localStorage.setItem('app-locale', newLocale)
+  localStorage.setItem('app-locale-public-security', newLocale)
 })
 // 控制漢堡選單開關的狀態
 const isNavOpen = ref(false)

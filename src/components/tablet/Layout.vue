@@ -47,7 +47,7 @@ const isFullscreen = ref(false)
 
 // ⭐ 1. 初始化讀取 LocalStorage
 onMounted(() => {
-    const savedLocale = localStorage.getItem('app-locale')
+    const savedLocale = localStorage.getItem('app-locale-public-security')
     if (savedLocale) {
         locale.value = savedLocale
     }
@@ -57,7 +57,7 @@ onMounted(() => {
 
 // ⭐ 2. 監聽 locale 變化並存入 LocalStorage
 watch(locale, (newLocale) => {
-    localStorage.setItem('app-locale', newLocale)
+    localStorage.setItem('app-locale-public-security', newLocale)
 })
 // 全螢幕切換邏輯
 const toggleFullscreen = () => {

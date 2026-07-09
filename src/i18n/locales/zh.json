@@ -114,7 +114,7 @@
     }
   },
   "dashboard": {
-    "alert": "緊急：{company} 床 {name} 觸發跌倒警報！",
+    "alert": "緊急：{company} 床 {name} 偵測到體溫過高！",
     "handle_now": "立即處理",
     "close_alert": "關閉警報",
     "announcement": "公告",
