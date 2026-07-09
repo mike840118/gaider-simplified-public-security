@@ -137,11 +137,11 @@
       "system_log": "System Log",
       "shift_log": "Shift Log"
     },
-    "overview": {
-      "title": "Overview",
-      "night_safety": "Night Safety 22:00-06:00",
+   "overview": {
+      "title": "Data Overview",
+      "night_safety": "Heat Stroke Risk Detection 22:00 - 06:00",
       "just_now": "Just now",
-      "abnormal": "Abnormal",
+      "abnormal": "High temperature detected",
       "processing": "Processing"
     },
     "heat": {
@@ -155,27 +155,27 @@
       "warning": "Warning",
       "normal": "Notice"
     },
-    "announcements_data": {
-     "item1": {
-        "tag": "[Important Notice]",
-        "title": "[Important Notice] In response to the peak season of respiratory infections, please implement patient health monitoring and real-time App reporting",
-        "previewDesc": "- Dear care and clinical colleagues: Due to the recent seasonal flu and res...",
+  "announcements_data": {
+      "item1": {
+        "tag": "[Emergency Alert]",
+        "title": "[Emergency Alert] Unannounced Public Safety Drill for \"Chemical Spill and Fire Response\" at 14:00 Today",
+        "previewDesc": "- Attention all staff: To improve emergency response capability across the plant, the company will conduct...",
         "time": "1:50 PM",
-        "content": "Dear care and clinical colleagues:\n\nIn response to the recent peak of seasonal flu and respiratory infectious diseases, to ensure infection control within the hospital/institution, please ensure all units implement the following epidemic prevention measures:\n\n1. Measure and record patients' body temperature and respiratory symptoms daily.\n2. If any abnormalities are found, please upload them immediately through the App's real-time reporting system.\n3. Please strictly wear protective equipment when contacting high-risk cases.\n\nThank you for your cooperation and hard work.\n[Publish Date] 2026-06-29"
+        "content": "Attention all staff:\n\nTo enhance the emergency response capability of the entire plant and ensure that every employee can make correct judgments at the first instance during an emergency, the company will conduct an unannounced public safety drill for \"Chemical Spill and Fire Response\" today at 14:00.\n\nI. Objective of the drill:\nPrimarily to strengthen proficiency in emergency isolation, evacuation route planning, and cross-departmental rescue command in the event of a chemical spill. Through simulating a fire scenario following high-pressure gas leakage, we will test the response speed of each department.\n\nII. Time and area of the drill:\n The drill will start promptly at 14:00, covering Production Plant 1, the Hazardous Materials Warehouse, and the surrounding areas of the Administration Building. The plant-wide emergency alarm system will be activated; please follow the instructions of the incident commander.\n\nIII. Response procedures:\n1. When the alarm sounds, stop all work immediately and shut off power and gas sources.\n2. If a chemical spill is discovered, remain calm and use protective equipment within the area for simple containment (if conditions permit).\n3. Follow the evacuation signs and move quickly to the emergency assembly point; do not use elevators.\n4. Section heads must count heads and report to the disaster prevention team.\n\nIV. Note:\nThis is an \"unannounced\" drill. The purpose is to test actual response capabilities. Employees do not need to be overly panicked but must face it with a serious attitude. If operations are delayed due to the drill, the company will arrange make-up time.\n\nSafety is our primary principle. Please treat this drill as a real-world situation to ensure the safety of yourself and others.\n\nThank you for your cooperation and hard work.\n[Date] 2026-06-29"
       },
       "item2": {
-        "tag": "[Health Notice]",
-        "title": "[Health Notice] High summer temperatures are here, please pay extra attention to the hydration of [elders/patients]",
-        "previewDesc": "- Thank you for your hard work: Temperatures have been rising continuously recently. Because [elders/severe patients] often have a dull sense of thirst or poor expression...",
+        "tag": "[Important Restriction]",
+        "title": "[2026/07/15] Notice on Periodic Maintenance and Hot Work Control for Propylene High-Pressure Pipeline",
+        "previewDesc": "- Attention all staff: The plant will conduct periodic maintenance on the No. 2 High-Pressure Pipeline from 08:00 to 17:00 on [07/15]...",
         "time": "10:00 AM",
-        "content": "Thank you for your hard work, colleagues:\n\nTemperatures have been rising continuously recently. Because [elders/severe patients] often have a dull sense of thirst or cannot express it clearly, which can easily lead to dehydration or heatstroke risks, please strengthen care according to the following principles:\n\n1. Provide warm water at regular intervals and record daily water intake.\n2. Pay attention to indoor temperature and ventilation, and adjust air conditioning settings if necessary.\n3. If early signs of dehydration such as reduced urine output or dry skin are observed, please intervene early.\n\nPrevention is better than cure, please pay close attention.\n[Publish Date] 2026-06-29"
+        "content": "Attention all staff:\n\nThis plant will conduct periodic maintenance and hot work on the \"No. 2 Propylene High-Pressure Pipeline\" from 08:00 to 17:00 on July 15, 2026 (Wednesday). This operation involves extremely high risks. Please read and follow the control regulations below in detail.\n\nI. Background and Goal:\nTo ensure stable equipment operation and comply with national labor safety and health regulations, this maintenance aims to check the airtightness of pressure vessels and valves to prevent potential leakage risks.\n\nII. Hot Work Control Zone:\nOn the maintenance day, a 50-meter radius around Pipeline No. 2 is designated as a \"Level 1 Alert Hot Work Zone.\" Except for operating personnel, all non-related personnel are strictly prohibited from entering.\n\nIII. Regulations for staff:\n1. All personnel entering the control zone must be verified by on-site safety personnel for PPE protective equipment.\n2. During hot work, all units must stop all unnecessary open flame use and storage of flammable materials.\n3. The parking lot within the control zone will be closed; please adjust your vehicle parking position in advance.\n4. If you smell an odor in the office, please close the windows immediately and report through the internal App.\n\nIV. Emergency Support Process:\nOn the maintenance day, the company will dispatch professional safety supervisors to be stationed on-site and have fire and rescue vehicles prepared. If you have any reports on operation defects, please use the real-time reporting function in the system directly.\n\nThis project is a necessary measure to maintain the long-term stability of the production line. We appreciate your understanding of the inconvenience caused during the operation.\n[Date] 2026-06-29"
       },
       "item3": {
-        "tag": "[Care Notice]",
-        "title": "[Care Notice] Please ensure the implementation of the \"Five Major Fall Prevention Inspections\" and utilize the platform to report environmental hazards in real-time",
-        "previewDesc": "- Hello colleagues: Recently, the fall risk assessment index for [residents/patients] on each floor has...",
-        "time": "08:42 AM",
-        "content": "Hello colleagues:\n\nRecently, the fall risk assessment index for [residents/patients] on various floors has changed. To ensure the safety of individuals, all frontline care staff must implement the following fall prevention inspections after each shift handover:\n\n1. Bedside safety check: Please confirm that when [residents/patients] are out of bed or in bed, the bed rails are securely pulled up, the bed wheels are locked, and the bed exit alarm is functioning properly.\n\n2. Environmental inspection: If you find stagnant water in the aisles, dim lighting, or loose barrier-free handrails, please take photos immediately and report them by uploading them through the platform's \"Logistics Repair/Environmental Report\" section so that the General Affairs team can repair them promptly.\n\n3. Platform assessment sync update: For high-risk individuals, please update the latest data in the \"Fall Risk Assessment Form\" within the platform on the scheduled weekly assessment day, so that the relieving staff can grasp the latest prevention priorities.\n\nFall prevention is everyone's responsibility. A little more attention means a little less regret.\n[Publish Date] 2026-06-29"
+        "tag": "[Safety Promotion]",
+        "title": "All staff must strictly implement the wearing of Personal Protective Equipment (PPE) on-site and upload to App for verification",
+        "previewDesc": "- Attention all plant/construction site staff: Based on recent data analysis from the Safety Group...",
+        "time": "Yesterday 09:00",
+        "content": "Attention all plant and construction site staff:\n\nBased on recent data analysis using the plant App by the Safety Group, it was found that some employees still do not implement the wearing of Personal Protective Equipment (PPE) and real-time verification when entering high-risk work areas. This is not only irresponsible to one's own health but also a threat to the company's overall safety environment.\n\nI. Mandatory PPE requirements:\n1. Entering construction zones: Helmets, safety shoes, and high-visibility vests are the basic configuration and are indispensable.\n2. Contacting chemicals: Protective eyewear, gas masks, and chemical-resistant gloves must be worn.\n3. Working at heights: Safety belts must be secured to the correct position and confirmed by partners.\n\nII. App real-time upload verification process:\nTo improve safety transparency, the company requires every employee to perform the following actions after entering the site:\n1. Open the App safety module.\n2. Complete the \"Personal Operation Protection Checklist\" selection.\n3. Upload a compliance selfie of on-site PPE wearing.\n\nIII. Violation measures:\nAccording to the company's safety operation guidelines, first-time violations will result in on-site guidance. Cumulative violators will be reported to their department heads and included in annual performance appraisal deductions. Serious cases will be subject to mandatory work stoppage and submission to the Safety Committee for review.\n\nIV. Safety Commitment:\nSafe operation is not only a regulation but also the biggest guarantee for us to go home to see our families every day. Please ensure that the section heads of each unit communicate this announcement to every frontline employee.\n[Date] 2026-06-28"
       }
     }
   },
@@ -426,5 +426,87 @@
         "upload_normal": "Uploaded health info (Normal)",
         "upload_abnormal": "Uploaded health info (Abnormal)"
       }
+    },
+    "shift_log": {
+      "title": "Shift Handover Log",
+      "shift_day": "Day Shift ( 07:00-15:00 )",
+      "recorder": "Recorder",
+      "resident_event_record": "Resident Event Log",
+      "table": {
+        "time": "Time",
+        "severity": "Severity",
+        "category": "Category",
+        "bed_name": "Bed/Name",
+        "recorder": "Recorder",
+        "content": "Content",
+        "status_tracking": "Status Tracking"
+      },
+      "severity_levels": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low",
+        "high_icon": "🔴 High"
+      },
+      "categories": {
+        "physiological": "Physiological",
+        "event": "Event",
+        "affair": "Affair",
+        "placeholder": "Category"
+      },
+      "status_options": {
+        "tracking": "Continuous Tracking",
+        "processed": "Processed/Under Observation"
+      },
+      "summary": {
+        "title": "Today's Summary of Completed Actions",
+        "sos_alert": "SOS Alert",
+        "low_battery_alert": "Low Battery Alert",
+        "night_movement_alert": "Night Movement Alert",
+        "remark": "Remark"
+      },
+      "form": {
+        "title": "Add Resident Event Record",
+        "time": "Time",
+        "severity": "Severity",
+        "category": "Category",
+        "bed_name": "Bed/Name",
+        "recorder": "Recorder",
+        "content": "Content",
+        "search_placeholder": "Enter bed number or name to search",
+        "add_btn": "Add"
+      },
+      "mock": {
+        "recorder_name_1": "Wang Xiaomei (Nurse/Caregiver)",
+        "recorder_name_2": "Wang Xiaomei",
+        "recorder_name_3": "Li Xiaoming",
+        "recorder_name_4": "Zhang Dazhong",
+        "patient_1": "102-B<br>Zhang XX",
+        "patient_2": "501-6<br>Zhang XX",
+        "patient_3": "202-3<br>Huang XX",
+        "patient_4": "402-3<br>Kang XX",
+        "content_1": "At 10:00 AM, body temperature was 38.2°C; antipyretic administered.<br>Measured 37.4°C at 2:26 PM.<br>Next shift: Please measure temperature every 2 hours.",
+        "content_2": "At 1:10 PM, resident attempted to get out of bed bedside and slid onto the floor.<br>No obvious trauma, conscious.<br>Next shift: Please monitor bed exit intent.",
+        "content_3": "Admitted to Room 202, Bed 3 at 08:01 AM.<br>Next shift: Please monitor adjustment status.",
+        "content_4": "Left room at 11:16 PM, confirmed resident returned to bed to sleep.",
+        "summary_desc_1": "[2026/06/29 13:00] 501-6 Bed Zhang XX triggered fall alarm",
+        "summary_remark_1": "Slid onto the floor while attempting to get out of bed",
+        "summary_desc_2": "[2026/06/29 14:34] 408-3 Bed Gao XX triggered low battery alert",
+        "summary_desc_3": "[2026/06/26 23:16] 402-3 Bed Kang XX triggered night movement alert",
+        "summary_remark_3": "Walked out of the room"
+      }
+    },
+    "worker_manage": {
+      "title": "Work Team Management",
+      "create_bed": "Create Bed",
+      "filter_floor": "XX Floor - Area A",
+      "filter_room": "Room 201",
+      "filter_status": "Occupied/Vacant",
+      "search_placeholder": "Enter name or bed number",
+      "care_level": "Care Level",
+      "nurse": "Nursing Staff",
+      "change_room": "Change Room",
+      "checkout": "Checkout",
+      "assign": "Assign",
+      "delete": "Delete"
     }
 }

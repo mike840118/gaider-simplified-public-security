@@ -21,7 +21,7 @@
 
           <div class="alert-actions">
             <button class="btn-yellow" @click="openSosModal(patient)">{{ $t('dashboard.handle_now')
-              }}</button>
+            }}</button>
             <button class="btn-red-outline">{{ $t('dashboard.close_alert') }}</button>
           </div>
         </div>
@@ -74,14 +74,14 @@
             $t('dashboard.actions.file_manage') }}</button>
           <button class="action-btn border-blue text-blue" @click="isBindDeviceOpen = true">{{
             $t('dashboard.actions.bind_device') }}</button>
-          <button class="action-btn border-purple text-purple" @click="isAdmissionOpen = true">{{
-            $t('dashboard.actions.admission_manage') }}</button>
+          <button class="action-btn border-purple text-purple" @click="isWorkerManageOpen = true">{{
+            $t('worker_manage.title') }}</button>
 
           <button class="action-btn border-green text-green" @click="isSystemLogOpen = true">{{
             $t('dashboard.actions.system_log') }}</button>
           <button class="action-btn border-yellow text-yellow" @click="isShiftLogOpen = true">{{
             $t('dashboard.actions.shift_log')
-          }}</button>
+            }}</button>
         </div>
       </div>
     </div>
@@ -135,7 +135,7 @@
           <div class="e-row">
             <span><span class="dot bg-blue"></span>{{ $t('dashboard.events.normal') }}</span>
             <span class="text-blue bold">5 <span class="unit-black">{{ $t('common.unit_count')
-                }}</span></span>
+            }}</span></span>
           </div>
         </div>
         <a href="#" class="more-link mt-auto">{{ $t('common.view_details') }}</a>
@@ -148,7 +148,7 @@
     <UpdateManagementModal :is-open="isFileManageOpen" @close="isFileManageOpen = false" />
     <SystemLogModal :is-open="isSystemLogOpen" @close="isSystemLogOpen = false" />
     <BindDeviceModal :is-open="isBindDeviceOpen" @close="isBindDeviceOpen = false" />
-    <AdmissionModal :is-open="isAdmissionOpen" @close="isAdmissionOpen = false" />
+    <WorkerManageModal :is-open="isWorkerManageOpen" @close="isWorkerManageOpen = false" />
     <BatteryViewModal :is-open="isBatteryModalOpen" :device-info="selectedInfo" @close="isBatteryModalOpen = false" />
     <ShiftLogModal :is-open="isShiftLogOpen" @close="isShiftLogOpen = false" />
   </div>
@@ -164,7 +164,7 @@ import AddMemberModal from './components/AddMemberModal.vue'
 import UpdateManagementModal from './components/UpdateManagementModal.vue'
 import SystemLogModal from './components/SystemLogModal.vue'
 import BindDeviceModal from './components/BindDeviceModal.vue'
-import AdmissionModal from './components/AdmissionModal.vue'
+import WorkerManageModal from './components/WorkerManageModal.vue'
 import BatteryViewModal from './components/BatteryDeviceModal.vue'
 import ShiftLogModal from './components/ShiftLogModal.vue'
 
@@ -209,7 +209,7 @@ const isAddMemberOpen = ref(false)
 const isFileManageOpen = ref(false)
 const isSystemLogOpen = ref(false)
 const isBindDeviceOpen = ref(false)
-const isAdmissionOpen = ref(false)
+const isWorkerManageOpen = ref(false)
 const isBatteryModalOpen = ref(false)
 const isShiftLogOpen = ref(false)
 const selectedInfo = ref({})

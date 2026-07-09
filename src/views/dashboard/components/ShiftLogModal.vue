@@ -2,7 +2,7 @@
   <div v-if="isOpen" class="modal-overlay" @click.self="closeModal">
     <div class="modal-content shift-modal">
       <div class="modal-header">
-        <h2 class="modal-title">交班日誌</h2>
+        <h2 class="modal-title">{{ $t('shift_log.title') }}</h2>
         <button class="close-btn" @click="closeModal">✕</button>
       </div>
 
@@ -11,82 +11,82 @@
           <span class="icon">📅</span> 2026/06/29
         </div>
         <div class="info-item">
-          <span class="icon text-yellow">☀️</span> 白班 ( 07：00-15：00 )
+          <span class="icon text-yellow">☀️</span> {{ $t('shift_log.shift_day') }}
         </div>
         <div class="divider-vertical"></div>
         <div class="info-item">
-          <span class="icon">👤</span> 記錄人：王小美 護理師/照服員
+          <span class="icon">👤</span> {{ $t('shift_log.recorder') }}：{{ $t('shift_log.mock.recorder_name_1') }}
         </div>
       </div>
 
-      <div class="section-title">住民事件記錄</div>
+      <div class="section-title">{{ $t('shift_log.resident_event_record') }}</div>
       <div class="table-wrapper">
         <table class="shift-table">
           <thead>
             <tr>
-              <th>時間</th>
-              <th>重要度</th>
-              <th>類別</th>
-              <th>床號/姓名</th>
-              <th>記錄人</th>
-              <th>內容</th>
-              <th>狀態追蹤</th>
+              <th width="12%">{{ $t('shift_log.table.time') }}</th>
+              <th width="8%">{{ $t('shift_log.table.severity') }}</th>
+              <th width="8%">{{ $t('shift_log.table.category') }}</th>
+              <th width="12%">{{ $t('shift_log.table.bed_name') }}</th>
+              <th width="10%">{{ $t('shift_log.table.recorder') }}</th>
+              <th width="35%">{{ $t('shift_log.table.content') }}</th>
+              <th width="15%">{{ $t('shift_log.table.status_tracking') }}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="text-center">2026/06/29<br>10：00</td>
-              <td class="text-center"><span class="tag tag-high">高</span></td>
-              <td class="text-center">生理</td>
-              <td class="text-center">102-B<br>張XX</td>
-              <td class="text-center">王小美</td>
-              <td>早上10：00體溫38.2度，已給予退燒藥，<br>14：26測量為37.4度。<br>下一班請每2小時量一次體溫。</td>
+              <td class="text-center"><span class="tag tag-high">{{ $t('shift_log.severity_levels.high') }}</span></td>
+              <td class="text-center">{{ $t('shift_log.categories.physiological') }}</td>
+              <td class="text-center" v-html="$t('shift_log.mock.patient_1')"></td>
+              <td class="text-center">{{ $t('shift_log.mock.recorder_name_2') }}</td>
+              <td v-html="$t('shift_log.mock.content_1')"></td>
               <td>
                 <select class="status-select outline-none">
-                  <option>需持續追蹤</option>
-                  <option>已處理/待觀察</option>
+                  <option selected>{{ $t('shift_log.status_options.tracking') }}</option>
+                  <option>{{ $t('shift_log.status_options.processed') }}</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="text-center">2026/06/29<br>13：00</td>
-              <td class="text-center"><span class="tag tag-med">中</span></td>
-              <td class="text-center">事件</td>
-              <td class="text-center">501-6<br>張XX</td>
-              <td class="text-center">王小美</td>
-              <td>下午13：10在床邊企圖自行下床時滑坐在地上，<br>無明顯外傷，意識清楚。<br>下一班請多注意下床意願。</td>
+              <td class="text-center"><span class="tag tag-med">{{ $t('shift_log.severity_levels.medium') }}</span></td>
+              <td class="text-center">{{ $t('shift_log.categories.event') }}</td>
+              <td class="text-center" v-html="$t('shift_log.mock.patient_2')"></td>
+              <td class="text-center">{{ $t('shift_log.mock.recorder_name_2') }}</td>
+              <td v-html="$t('shift_log.mock.content_2')"></td>
               <td>
                 <select class="status-select outline-none">
-                  <option>已處理/待觀察</option>
-                  <option>需持續追蹤</option>
+                  <option selected>{{ $t('shift_log.status_options.processed') }}</option>
+                  <option>{{ $t('shift_log.status_options.tracking') }}</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="text-center">2026/06/28<br>08：01</td>
-              <td class="text-center"><span class="tag tag-low">低</span></td>
-              <td class="text-center">事務</td>
-              <td class="text-center">202-3<br>黃XX</td>
-              <td class="text-center">李小明</td>
-              <td>上午08：01入住X樓202室3床<br>下一班請多注意適應情況。</td>
+              <td class="text-center"><span class="tag tag-low">{{ $t('shift_log.severity_levels.low') }}</span></td>
+              <td class="text-center">{{ $t('shift_log.categories.affair') }}</td>
+              <td class="text-center" v-html="$t('shift_log.mock.patient_3')"></td>
+              <td class="text-center">{{ $t('shift_log.mock.recorder_name_3') }}</td>
+              <td v-html="$t('shift_log.mock.content_3')"></td>
               <td>
                 <select class="status-select outline-none">
-                  <option>已處理/待觀察</option>
-                  <option>需持續追蹤</option>
+                  <option selected>{{ $t('shift_log.status_options.processed') }}</option>
+                  <option>{{ $t('shift_log.status_options.tracking') }}</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="text-center">2026/06/26<br>23：16</td>
-              <td class="text-center"><span class="tag tag-med">中</span></td>
-              <td class="text-center">事件</td>
-              <td class="text-center">402-3<br>康XX</td>
-              <td class="text-center">張大中</td>
-              <td>晚上23：16離開房間，已確認住民回到房間床<br>上入睡。</td>
+              <td class="text-center"><span class="tag tag-med">{{ $t('shift_log.severity_levels.medium') }}</span></td>
+              <td class="text-center">{{ $t('shift_log.categories.event') }}</td>
+              <td class="text-center" v-html="$t('shift_log.mock.patient_4')"></td>
+              <td class="text-center">{{ $t('shift_log.mock.recorder_name_4') }}</td>
+              <td v-html="$t('shift_log.mock.content_4')"></td>
               <td>
                 <select class="status-select outline-none">
-                  <option>已處理/待觀察</option>
-                  <option>需持續追蹤</option>
+                  <option selected>{{ $t('shift_log.status_options.processed') }}</option>
+                  <option>{{ $t('shift_log.status_options.tracking') }}</option>
                 </select>
               </td>
             </tr>
@@ -97,66 +97,73 @@
       <div class="bottom-grid">
 
         <div class="summary-section">
-          <div class="section-title">今日已處置完成摘要</div>
+          <div class="section-title mt-0">{{ $t('shift_log.summary.title') }}</div>
+          <div class="summary-list">
+            <div class="summary-card border-red">
+              <div class="card-title text-red">{{ $t('shift_log.summary.sos_alert') }}</div>
+              <div class="card-desc">
+                {{ $t('shift_log.mock.summary_desc_1') }}<br>
+                <span class="remark">{{ $t('shift_log.summary.remark') }}：{{ $t('shift_log.mock.summary_remark_1')
+                  }}</span>
+              </div>
+            </div>
 
-          <div class="summary-card border-red">
-            <div class="card-title text-red">SOS警報</div>
-            <div class="card-desc">[2026/06/29 13：00] 501-6床 張XX 觸發跌倒警報<br><span
-                class="remark">備註：在床邊試圖自行下床時滑坐在地上</span></div>
-          </div>
+            <div class="summary-card border-blue">
+              <div class="card-title text-blue">{{ $t('shift_log.summary.low_battery_alert') }}</div>
+              <div class="card-desc">{{ $t('shift_log.mock.summary_desc_2') }}</div>
+            </div>
 
-          <div class="summary-card border-blue">
-            <div class="card-title text-blue">低電量警報</div>
-            <div class="card-desc">[2026/06/29 14：34] 408-3床 高XX 觸發低電量警報</div>
-          </div>
-
-          <div class="summary-card border-purple">
-            <div class="card-title text-purple">夜間移動警報</div>
-            <div class="card-desc">[2026/06/26 23：16] 402-3床 康XX 觸發夜間移動警報<br><span class="remark">備註：離開房間走動</span></div>
+            <div class="summary-card border-purple">
+              <div class="card-title text-purple">{{ $t('shift_log.summary.night_movement_alert') }}</div>
+              <div class="card-desc">
+                {{ $t('shift_log.mock.summary_desc_3') }}<br>
+                <span class="remark">{{ $t('shift_log.summary.remark') }}：{{ $t('shift_log.mock.summary_remark_3')
+                  }}</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="form-section">
-          <div class="form-box">
-            <div class="section-title mt-0">新增住民事件記錄</div>
-            <div class="form-row">
-              <div class="input-group">
-                <label>時間</label>
-                <input type="text" value="2026/06/29" class="input-date" />
-              </div>
-              <div class="input-group">
-                <label>重要度</label>
-                <select class="input-select">
-                  <option>🔴 高</option>
-                </select>
-              </div>
-              <div class="input-group">
-                <label>類別</label>
-                <select class="input-select">
-                  <option>類別</option>
-                </select>
-              </div>
-              <div class="input-group flex-1">
-                <label>床號/姓名</label>
-                <div class="search-input-wrapper">
-                  <input type="text" placeholder="輸入床號或姓名查詢" class="input-search" />
-                  <span class="search-icon">🔍</span>
-                </div>
-              </div>
-              <div class="input-group">
-                <label>記錄人</label>
-                <input type="text" value="王小美" class="input-recorder" readonly />
-              </div>
-            </div>
+        <div class="form-box">
+          <div class="section-title mt-0">{{ $t('shift_log.form.title') }}</div>
 
-            <div class="input-group full-width mt-12">
-              <label>內容</label>
-              <textarea class="content-textarea"></textarea>
+          <div class="form-row-grid">
+            <div class="input-group">
+              <label>{{ $t('shift_log.form.time') }}</label>
+              <input type="text" value="2026/06/29" class="form-input" />
             </div>
+            <div class="input-group">
+              <label>{{ $t('shift_log.form.severity') }}</label>
+              <select class="form-input">
+                <option>{{ $t('shift_log.severity_levels.high_icon') }}</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>{{ $t('shift_log.form.category') }}</label>
+              <select class="form-input">
+                <option>{{ $t('shift_log.categories.placeholder') }}</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>{{ $t('shift_log.form.bed_name') }}</label>
+              <div class="search-input-wrapper">
+                <input type="text" :placeholder="$t('shift_log.form.search_placeholder')" class="form-input" />
+                <span class="search-icon">🔍</span>
+              </div>
+            </div>
+            <div class="input-group">
+              <label>{{ $t('shift_log.form.recorder') }}</label>
+              <input type="text" :value="$t('shift_log.mock.recorder_name_2')" class="form-input input-readonly"
+                readonly />
+            </div>
+          </div>
 
-            <div class="submit-row">
-              <button class="btn-submit">新增</button>
-            </div>
+          <div class="input-group mt-12">
+            <label>{{ $t('shift_log.form.content') }}</label>
+            <textarea class="content-textarea"></textarea>
+          </div>
+          <div class="submit-row">
+            <button class="btn-submit">{{ $t('shift_log.form.add_btn') }}</button>
           </div>
         </div>
 
@@ -167,9 +174,13 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n' // 👈 引入 i18n
+
 defineProps({ isOpen: Boolean })
 const emit = defineEmits(['close'])
 const closeModal = () => emit('close')
+
+const { t } = useI18n() // 👈 初始化
 </script>
 
 <style scoped>
@@ -190,16 +201,16 @@ const closeModal = () => emit('close')
   background: white;
   border-radius: 8px;
   padding: 24px 32px;
-  width: 1100px;
+  width: 1200px;
   max-width: 95%;
-  max-height: 90vh;
-  overflow-y: auto;
+  height: 90vh;
+  /* 固定高度，讓內部區塊可以用 flex 分配比例 */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
 }
 
-/* 標題與關閉按鈕 */
+/* ================= 標題與次標題 ================= */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -221,7 +232,6 @@ const closeModal = () => emit('close')
   color: #666;
 }
 
-/* 次標題區塊 */
 .sub-header {
   display: flex;
   align-items: center;
@@ -249,7 +259,6 @@ const closeModal = () => emit('close')
   background-color: #ccc;
 }
 
-/* 區塊標題 */
 .section-title {
   font-size: 16px;
   font-weight: bold;
@@ -261,11 +270,15 @@ const closeModal = () => emit('close')
   margin-top: 0;
 }
 
-/* 住民事件記錄表格 */
+/* ================= 上方：住民事件記錄表格 (自動延伸佔8成) ================= */
 .table-wrapper {
+  flex: 1;
+  /* 自動佔用剩餘最大空間 */
+  overflow-y: auto;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-  overflow: hidden;
+  margin-bottom: 24px;
+  /* 與下方區塊保持距離 */
 }
 
 .shift-table {
@@ -281,6 +294,9 @@ const closeModal = () => emit('close')
   padding: 12px;
   border-bottom: 1px solid #e5e7eb;
   text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .shift-table th.text-center,
@@ -296,22 +312,19 @@ const closeModal = () => emit('close')
   line-height: 1.5;
 }
 
-.shift-table tr:last-child td {
-  border-bottom: none;
-}
-
 .status-select {
   border: none;
   background: transparent;
   color: #333;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .outline-none:focus {
   outline: none;
 }
 
-/* 重要度標籤 */
+/* 標籤 */
 .tag {
   display: inline-flex;
   align-items: center;
@@ -338,20 +351,36 @@ const closeModal = () => emit('close')
   color: #3b82f6;
 }
 
-/* 底部左右區塊 */
+/* ================= 下方：底部雙欄佈局 (固定不壓縮佔2成) ================= */
 .bottom-grid {
+  flex-shrink: 0;
+  /* 避免被上方表格擠壓 */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
+  /* 右側表單略寬以容納整行輸入 */
   gap: 24px;
-  margin-top: 8px;
 }
 
-/* 左側：摘要卡片 */
+/* 左側：摘要區塊 */
+.summary-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 240px;
+  /* 限制高度出現捲軸 */
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
 .summary-card {
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   padding: 12px 16px;
-  margin-bottom: 12px;
   background-color: white;
 }
 
@@ -396,17 +425,20 @@ const closeModal = () => emit('close')
   font-size: 12px;
 }
 
-/* 右側：新增表單 */
+/* 右側：新增表單區塊 */
 .form-box {
   background-color: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   padding: 16px;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.form-row {
-  display: flex;
+/* Grid 鎖定一列：確保輸入框不換行且比例完美 */
+.form-row-grid {
+  display: grid;
+  grid-template-columns: 110px 80px 80px 1fr 80px;
   gap: 12px;
   align-items: flex-end;
 }
@@ -418,43 +450,21 @@ const closeModal = () => emit('close')
 }
 
 .input-group label {
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
 }
 
-.input-group.flex-1 {
-  flex: 1;
-}
-
-.input-group.full-width {
+.form-input {
   width: 100%;
-}
-
-.mt-12 {
-  margin-top: 12px;
-}
-
-.input-date,
-.input-select,
-.input-recorder,
-.input-search {
   padding: 8px 10px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
   font-size: 14px;
   outline: none;
+  box-sizing: border-box;
 }
 
-.input-date {
-  width: 110px;
-}
-
-.input-select {
-  width: 80px;
-}
-
-.input-recorder {
-  width: 80px;
+.input-readonly {
   background-color: #f3f4f6;
   color: #6b7280;
 }
@@ -465,8 +475,7 @@ const closeModal = () => emit('close')
 }
 
 .search-input-wrapper input {
-  width: 100%;
-  padding-right: 30px;
+  padding-right: 28px;
 }
 
 .search-icon {
@@ -475,17 +484,23 @@ const closeModal = () => emit('close')
   top: 50%;
   transform: translateY(-50%);
   color: #9ca3af;
-  font-size: 14px;
+  font-size: 13px;
+}
+
+.mt-12 {
+  margin-top: 12px;
 }
 
 .content-textarea {
   width: 100%;
-  height: 80px;
+  height: 60px;
+  /* 壓低高度確保底部俐落 */
   padding: 10px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
   resize: none;
   outline: none;
+  box-sizing: border-box;
 }
 
 .submit-row {
