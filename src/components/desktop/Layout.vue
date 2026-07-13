@@ -2,10 +2,11 @@
   <div class="desktop-layout">
     <header class="top-navbar">
       <div class="brand-zone">
-        <span class="logo-icon">💠</span>
+
+        <img src="@/assets/logo.png" alt="Logo" class="logo-icon">
         <div class="logo-area">
           <h1>{{ $t('layout.title') }}</h1>
-          <h1>{{ $t('layout.title2') }}</h1>
+
         </div>
       </div>
 
@@ -47,7 +48,7 @@ const isFullscreen = ref(false)
 
 // ⭐ 1. 初始化讀取 LocalStorage
 onMounted(() => {
-  const savedLocale = localStorage.getItem('app-locale-public-security')
+  const savedLocale = localStorage.getItem('app-locale')
   if (savedLocale) {
     locale.value = savedLocale
   }
@@ -57,7 +58,7 @@ onMounted(() => {
 
 // ⭐ 2. 監聽 locale 變化並存入 LocalStorage
 watch(locale, (newLocale) => {
-  localStorage.setItem('app-locale-public-security', newLocale)
+  localStorage.setItem('app-locale', newLocale)
 })
 
 // 全螢幕切換邏輯 (保持不變)
@@ -84,6 +85,7 @@ onUnmounted(() => {
   background-color: #121921;
   min-height: 100vh;
   color: #e0e0e0;
+  font-family: Arial, sans-serif
 }
 
 .top-navbar {
@@ -107,7 +109,8 @@ onUnmounted(() => {
 }
 
 .logo-icon {
-  font-size: 32px;
+  font-size: 24px;
+  width: 40px;
   color: #00bcd4;
   /* 調整為截圖中的亮藍色 */
 }
@@ -160,7 +163,7 @@ onUnmounted(() => {
 }
 
 .main-content {
-  padding: 24px;
+  padding: 12px;
   min-height: calc(100vh - 170px);
 }
 

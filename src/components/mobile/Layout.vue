@@ -1,10 +1,10 @@
 <template>
   <div class="mobile-layout">
     <header class="mobile-header">
-      <span class="logo-icon">💠</span>
+      <img src="@/assets/logo.png" alt="Logo" class="logo-icon">
       <div class="logo-area">
-        <h1>{{ $t('layout.title') }}</h1>
-        <h1>{{ $t('layout.title2') }}</h1>
+        <div class="logo-title">{{ $t('layout.title') }}</div>
+
       </div>
 
       <div class="header-right">
@@ -53,7 +53,7 @@ import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 // ⭐ 1. 初始化讀取 LocalStorage
 onMounted(() => {
-  const savedLocale = localStorage.getItem('app-locale-public-security')
+  const savedLocale = localStorage.getItem('app-locale')
   if (savedLocale) {
     locale.value = savedLocale
   }
@@ -66,7 +66,7 @@ onMounted(() => {
 
 // ⭐ 2. 監聽 locale 變化並存入 LocalStorage
 watch(locale, (newLocale) => {
-  localStorage.setItem('app-locale-public-security', newLocale)
+  localStorage.setItem('app-locale', newLocale)
 })
 // 控制漢堡選單開關的狀態
 const isNavOpen = ref(false)
@@ -78,6 +78,7 @@ const isNavOpen = ref(false)
   min-height: 100vh;
   color: #e0e0e0;
   position: relative;
+  font-family: Arial, sans-serif
 }
 
 .mobile-header {
@@ -206,5 +207,12 @@ const isNavOpen = ref(false)
   /* 移除了原本給底部導覽列留的空間，現在可以佔滿 */
   height: calc(100vh - 56px);
   overflow: hidden;
+}
+
+.logo-icon {
+  font-size: 24px;
+  width: 40px;
+  color: #00bcd4;
+  /* 調整為截圖中的亮藍色 */
 }
 </style>

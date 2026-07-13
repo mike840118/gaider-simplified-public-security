@@ -51,9 +51,8 @@
     "recovery": "回復"
   },
   "layout": {
-    "titleLayout": "健康大數據管理平台",
-    "title": "健康大數據",
-    "title2": "管理平台",
+      "titleLayout": "健康大數據管理平台",
+    "title": "管理平台",
     "title_short": "健康平台",
     "nav": {
       "dashboard": "儀錶板",
