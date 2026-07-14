@@ -113,45 +113,45 @@
       }
     },
   "dashboard": {
-    "alert": "緊急：{company} {name} 様の体温上昇を検知しました！",
-    "handle_now": "即時対応",
-    "close_alert": "アラート解除",
+    "alert": "緊急：{company} {name}の転倒を検知しました！",
+    "handle_now": "確認・対応",
+    "close_alert": "確認済みにする",
     "announcement": "お知らせ",
     "today": "本日",
-    "view": "確認",
+    "view": "一覧を見る",
     "stats": {
-      "total_members": "総会員数",
-      "today_added": "本日追加",
-      "pending_events": "未処理イベント",
-      "online_count": "オンライン",
-      "offline_count": "オフライン",
-      "low_battery": "電池残量低下"
+      "total_members": "登録利用者数",
+      "today_added": "本日の新規登録",
+      "pending_events": "未対応アラート",
+      "online_count": "端末接続中",
+      "offline_count": "端末未接続",
+      "low_battery": "バッテリー残量低下"
     },
     "actions": {
-      "title": "管理設定",
-      "add_member": "会員追加",
-      "file_manage": "ファイル管理",
+      "title": "管理メニュー",
+      "add_member": "利用者登録",
+      "file_manage": "利用者情報管理",
       "bind_device": "デバイス連携",
-      "admission_manage": "入院・入所管理",
-      "system_log": "システムログ",
-      "shift_log": "引継日誌"
+      "admission_manage": "入退院・所管理",
+      "system_log": "操作履歴",
+      "shift_log": "申し送り記録"
     },
-   "overview": {
-      "title": "データ概要",
-      "night_safety": "熱中症リスク検知 22:00 - 06:00",
+    "overview": {
+        "title": "データ概要",
+      "night_safety": "夜間見守り 22:00～翌6:00",
       "just_now": "たった今",
-      "abnormal": "体温上昇を検知",
-      "processing": "処理中"
+     "abnormal": "体温上昇を検知",
+      "processing": "対応中"
     },
     "heat": {
-      "title": "環境熱中症アラート",
-      "room_temp_high": "室温高め",
-      "high_risk_users": "高リスク対象者"
+      "title": "熱中症リスクアラート",
+      "room_temp_high": "室温：高め",
+      "high_risk_users": "熱中症高リスク者"
     },
     "events": {
-      "title": "本日のイベント合計",
-      "urgent": "緊急イベント",
-      "warning": "予警報イベント",
+      "title": "本日のアラート・通知",
+      "urgent": "緊急アラート",
+      "warning": "注意アラート",
       "normal": "一般通知"
     },
    "announcements_data": {
